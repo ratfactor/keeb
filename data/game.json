@@ -1,0 +1,489 @@
+{
+"start":{
+"paths": [
+{"str":"i was in the forest"
+, "paths": [
+{"str":"and i wandered to a"
+, "paths": [
+{"str":"waterfall"
+,"sect":"waterfall"
+}, 
+{"str":"cave"
+,"sect":"cave"
+}]
+}]
+}]
+},
+"waterfall":{
+"paths": [
+{"str":"the cool water thundered down"
+, "paths": [
+{"str":"and i was"
+, "paths": [
+{"str":"brave"
+,"sect":"behind_falls"
+}, 
+{"str":"frightened"
+,"sect":"field"
+}]
+}]
+}]
+},
+"behind_falls":{
+"paths": [
+{"str":"so i stepped closer"
+, "paths": [
+{"str":"and saw that there was a"
+, "paths": [
+{"str":"space behind the falls"
+, "paths": [
+{"str":"so i"
+, "paths": [
+{"str":"searched it"
+,"sect":"search"
+}, 
+{"str":"ran away"
+,"sect":"field"
+}]
+}]
+}]
+}]
+}]
+},
+"search":{
+"paths": [
+{"str":"i found a jewel, yay"
+, "paths": [
+{"str":"i took it with me"
+, "paths": [
+{"str":"and then left"
+,"sect":"field"
+}]
+}]
+}]
+},
+"cave":{
+"paths": [
+{"str":"it was cold and damp"
+, "paths": [
+{"str":"and smelled of copper"
+,"sect":"cave_choices"
+}]
+}]
+},
+"cave_choices":{
+"paths": [
+{"str":"i decided to explore the"
+, "paths": [
+{"str":"dark pool"
+,"sect":"pool"
+}, 
+{"str":"shaft to lower depths"
+,"sect":"lower"
+}, 
+{"str":"crysal cavern"
+,"sect":"crystals"
+}, 
+{"str":"leave the cave"
+,"sect":"field"
+}]
+}]
+},
+"pool":{
+"paths": [
+{"str":"the pool was blue"
+, "paths": [
+{"str":"and perfectly clear"
+, "paths": [
+{"str":"in the light of my lamp"
+, "paths": [
+{"str":"it looked tempting"
+, "paths": [
+{"str":"so i drank some of the water"
+,"sect":"drink"
+}, 
+{"str":"but i left it alone"
+, "paths": [
+{"str":"because it might not be safe"
+,"sect":"no_drink"
+}]
+}]
+}]
+}]
+}]
+}]
+},
+"drink":{
+"paths": [
+{"str":"hmmmm okay"
+, "paths": [
+{"str":"that might not have been"
+, "paths": [
+{"str":"a good idea and my"
+, "paths": [
+{"str":"tummy hurt a bit"
+, "paths": [
+{"str":"but i lived"
+,"sect":"cave_choices"
+}]
+}]
+}]
+}]
+}]
+},
+"no_drink":{
+"paths": [
+{"str":"i felt pretty smart not drinking the water"
+, "paths": [
+{"str":"but now i was a bit thirsty"
+,"sect":"cave_choices"
+}]
+}]
+},
+"lower":{
+"paths": [
+{"str":"i stepped towards the dark"
+, "paths": [
+{"str":"and realized there was ice"
+, "paths": [
+{"str":"under my feet"
+,"sect":"slip"
+}]
+}]
+}]
+},
+"slip":{
+"paths": [
+{"str":"to my horror"
+, "paths": [
+{"str":"i slid down into the dark"
+, "paths": [
+{"str":"with my lantern lighting"
+, "paths": [
+{"str":"the walls of stone"
+, "paths": [
+{"str":"as they rushed past"
+, "paths": [
+{"str":"i yelped in fear"
+, "paths": [
+{"str":"and was then at the bottom"
+,"sect":"bottom"
+}]
+}]
+}]
+}]
+}]
+}]
+}]
+},
+"bottom":{
+"paths": [
+{"str":"i was in a bowl like room"
+, "paths": [
+{"str":"of stone and below me was"
+, "paths": [
+{"str":"ice so thick that my"
+, "paths": [
+{"str":"lantern could not"
+, "paths": [
+{"str":"penetrate its depths"
+,"sect":"bottom2"
+}]
+}]
+}]
+}]
+}]
+},
+"bottom2":{
+"paths": [
+{"str":"my heart was racing"
+, "paths": [
+{"str":"and i was very cold"
+, "paths": [
+{"str":"i could see my breath"
+, "paths": [
+{"str":"in the lantern light"
+, "paths": [
+{"str":"but i was alive"
+, "paths": [
+{"str":"now i would"
+, "paths": [
+{"str":"give up"
+,"sect":"give_up"
+}, 
+{"str":"look around"
+,"sect":"bottom3"
+}]
+}]
+}]
+}]
+}]
+}]
+}]
+},
+"give_up":{
+"paths": [
+{"str":"i gave up"
+, "paths": [
+{"str":"but eventually got"
+, "paths": [
+{"str":"too cold and decided to"
+, "paths": [
+{"str":"look around"
+,"sect":"bottom3"
+}]
+}]
+}]
+}]
+},
+"bottom3":{
+"paths": [
+{"str":"as i looked frantically around"
+, "paths": [
+{"str":"i realized that someone"
+, "paths": [
+{"str":"had installed an old wooden"
+, "paths": [
+{"str":"ladder at the bottom"
+, "paths": [
+{"str":"of that ice pit"
+, "paths": [
+{"str":"so i"
+, "paths": [
+{"str":"gave up"
+,"sect":"give_up"
+}, 
+{"str":"climbed up"
+,"sect":"ladder_up"
+}]
+}]
+}]
+}]
+}]
+}]
+}]
+},
+"ladder_up":{
+"paths": [
+{"str":"the cold wet wood of the ladder"
+, "paths": [
+{"str":"creaked and groaned"
+, "paths": [
+{"str":"as i climbed up"
+, "paths": [
+{"str":"but it held"
+, "paths": [
+{"str":"now i was halfway"
+, "paths": [
+{"str":"so i"
+, "paths": [
+{"str":"gave up and slid back down"
+,"sect":"give_up"
+}, 
+{"str":"climbed the rest of the way up"
+,"sect":"ladder_up_2"
+}]
+}]
+}]
+}]
+}]
+}]
+}]
+},
+"ladder_up_2":{
+"paths": [
+{"str":"at last"
+, "paths": [
+{"str":"i emerged at the top of the"
+, "paths": [
+{"str":"icy shaft"
+, "paths": [
+{"str":"and shook the last of"
+, "paths": [
+{"str":"the cold out of my body"
+, "paths": [
+{"str":"and looked around"
+,"sect":"cave_choices"
+}]
+}]
+}]
+}]
+}]
+}]
+},
+"crystals":{
+"paths": [
+{"str":"behind a pillar of green rock"
+, "paths": [
+{"str":"was a narrow entrance"
+, "paths": [
+{"str":"rimmed with glittering"
+, "paths": [
+{"str":"crystals"
+, "paths": [
+{"str":"i went inside"
+,"sect":"crystals2"
+}]
+}]
+}]
+}]
+}]
+},
+"crystals2":{
+"paths": [
+{"str":"it was beautiful"
+, "paths": [
+{"str":"in the crystal room"
+, "paths": [
+{"str":"with every color"
+, "paths": [
+{"str":"of the rainbow"
+, "paths": [
+{"str":"and then"
+, "paths": [
+{"str":"i heard a small voice"
+, "paths": [
+{"str":"say hello"
+, "paths": [
+{"str":"and i"
+, "paths": [
+{"str":"ran out"
+,"sect":"cave_choices"
+}, 
+{"str":"said hello back"
+,"sect":"hello"
+}]
+}]
+}]
+}]
+}]
+}]
+}]
+}]
+}]
+},
+"hello":{
+"paths": [
+{"str":"i trembled"
+, "paths": [
+{"str":"half with fear"
+, "paths": [
+{"str":"and half with excitement"
+, "paths": [
+{"str":"as a tiny figure"
+, "paths": [
+{"str":"emerged from behind"
+, "paths": [
+{"str":"an orange and pink"
+, "paths": [
+{"str":"crystal"
+,"sect":"hello2"
+}]
+}]
+}]
+}]
+}]
+}]
+}]
+},
+"hello2":{
+"paths": [
+{"str":"it was a girl"
+, "paths": [
+{"str":"with pointy ears"
+, "paths": [
+{"str":"and a colorful and"
+, "paths": [
+{"str":"shiny little cloak"
+, "paths": [
+{"str":"that looked like"
+, "paths": [
+{"str":"spun gold with purple"
+, "paths": [
+{"str":"and emerald crystals"
+, "paths": [
+{"str":"i waved and"
+, "paths": [
+{"str":"ran"
+,"sect":"cave_choices"
+}, 
+{"str":"said hello again"
+,"sect":"hello3"
+}]
+}]
+}]
+}]
+}]
+}]
+}]
+}]
+}]
+},
+"hello3":{
+"paths": [
+{"str":"the little elf"
+, "paths": [
+{"str":"girl told me"
+, "paths": [
+{"str":"fun secrets about"
+, "paths": [
+{"str":"her people and then"
+, "paths": [
+{"str":"gave me a magic crystal"
+, "paths": [
+{"str":"necklace and then i"
+, "paths": [
+{"str":"realized how tired i was and"
+, "paths": [
+{"str":"bid her farewell"
+,"sect":"cave_choices"
+}]
+}]
+}]
+}]
+}]
+}]
+}]
+}]
+},
+"field":{
+"paths": [
+{"str":"i ran until i came to a"
+, "paths": [
+{"str":"peaceful field"
+, "paths": [
+{"str":"i decided"
+, "paths": [
+{"str":"waterfalls are more exciting"
+,"sect":"waterfall"
+}, 
+{"str":"caves would be fun to explore"
+,"sect":"cave"
+}, 
+{"str":"this would be a good place to stay"
+,"sect":"field2"
+}]
+}]
+}]
+}]
+},
+"field2":{
+"paths": [
+{"str":"it was full of the smell of flowers"
+, "paths": [
+{"str":"and a warm breeze"
+, "paths": [
+{"str":"the end."
+,"sect":"the_end"
+}, 
+{"str":""
+}]
+}]
+}]
+},
+"the_end":{
+"paths": [
+{"str":"THE GAME IS DONE! :-)"
+}]
+}}
+

@@ -1,0 +1,82 @@
+<html>
+<head>
+	<style>
+		.key {
+			display:       inline-block;
+			height:        54px;
+			border-radius: 5px;
+			border:        1px solid black;
+			padding:       10px;
+			box-sizing:    border-box;
+		}
+		.flash {
+			animation-duration: 1s;
+			animation-name: flash;
+		}
+		@keyframes flash{
+			from {
+				background-color: lime;
+			}
+			to {
+				background-color: white;
+			}
+		}
+		.w100 {width: 54px;} 
+		.w125 {width: 67px;}
+		.w150 {width: 81px;}
+		.w175 {width: 94px;}
+		.w200 {width: 108px;}
+		.w225 {width: 121px;}
+		.w275 {width: 148px;}
+		.w625 {width: 339px;}
+	</style>
+</head>
+<body>
+<script src="https://unpkg.com/mithril/mithril.js"></script>
+<script>
+
+// ANSI physical layout - but with keys that differ with ISO blanked out
+var keyboard_layout = [
+	[' ','1','2','3','4','5','6','7','8','9','0','-','=','Backspace/200'],
+	['Tab/150','q','w','e','r','t','y','u','i','o','p','[',']','\\/150'],
+	['Caps/175','a','s','d','f','g','h','j','k','l',';',' ','Enter/225'],
+	['Shift/225','z','x','c','v','b','n','m',',','.','slash','Shift/275'],
+	['Ctrl/125',' /125','Alt/125',' /625','Alt/125',' /125',' /125','Ctrl/125'],
+].map(function(row){
+	return row.map(function(key){
+		var bits = key.split('/');
+		var label = bits[0];
+		var width = '.w100';
+		if(label==='slash') label='/';
+		if(label===' ') label='&nbsp;';
+		if(bits.length>1){
+			width = '.w' + bits[1];
+		}
+		return {label:label, width:width};
+	});
+});
+
+var keyboard = {
+	view: function(){
+		return keyboard_layout.map(function(row){
+			return m(".row", row.map(function(key){
+				var flash='';
+				if(key.label===key_pressed){
+				   	flash = '.flash';
+				}
+				return m('.key'+key.width+flash, m.trust(key.label));
+			}));
+		});
+	},
+};
+
+var key_pressed = '';
+
+document.addEventListener('keypress', function(event){
+	key_pressed = event.key;
+	m.redraw();
+});
+
+m.mount(document.body, keyboard);
+</script>
+</body>

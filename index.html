@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+	<meta charset="utf-8">
+	<head>
+		<title>Keeb's Quest - An Adventure in Typing</title>
+	</head>
+<body>
+<script src="lib/playground.js"></script>
+<script>
+var curpath  = null;
+var curstr   = '';
+var typedstr = '';
+var strpos   = 0;
+var wrong_key = '';
+var at_choice = false;
+var blink_cursor = false;
+
+// easyblinkencursor
+setInterval(function(){
+	blink_cursor = !blink_cursor;
+}, 500);
+
+function section(sect_name){
+	// assume for now that sections have one top-level path
+	curpath = adventure.data.game[sect_name].paths[0];
+	if(!curpath) alert("section "+sect_name+" has abysmal paths.");
+	curstr  = curpath.str;
+	typedstr = '';
+	strpos = 0;
+}
+
+function press(key){
+	wrong_key = '';
+	if(key === 'space') key = ' ';
+	if(key === 'period') key = '.';
+	if(key === 'comma') key = ',';
+
+	if(at_choice){
+		choose(key);
+	}
+	else{
+		nextkey(key);
+	}
+
+	if(key === 'space'){
+		// make space never "wrong" - because it's not clear
+		// if we should be typing it between paths yet...
+		wrong_key = '';
+	}
+}
+
+function choose(key){
+	curpath.paths.forEach(function(path){
+		if(path.str[0] === key){
+			curpath = path;
+			curstr  = path.str;
+			strpos = 1;
+			typedstr=key;
+			at_choice = false;
+			return;
+		}
+	});
+
+	wrong_key = key;
+}
+
+function nextkey(key){
+	if(curpath.str[strpos] === key){
+		strpos++;
+		typedstr+=key;
+		if(strpos >= curpath.str.length){
+			// now it's either a choice of paths or we're
+			// going to a new section:
+			if(curpath.sect){
+				section(curpath.sect);
+			}
+			else{
+				at_choice = true;
+			}
+		}
+	}
+	else{
+		wrong_key = key;
+	}
+}
+
+var adventure = playground({
+	create: function(){
+		this.loadData("game");
+		this.loadImage("path.jpg");
+	},
+
+	render: function(){
+		var pad_top = 480;
+		var pad_left = 50;
+
+		this.layer.clear("#608000");
+		this.layer.font("32px serif");
+
+		// draw img
+		this.layer.drawImage(this.images.path, 0, 0);
+
+		// draw string to be typed
+		this.layer.fillStyle('#FFF')
+			.fillText(curstr, pad_left, pad_top);
+
+		// draw cursor
+		if(blink_cursor){
+			var cursor_pos = this.layer.measureText(typedstr).width;
+			this.layer.fillStyle( wrong_key === '' ? '#779E00' : '#F00' );
+			this.layer.fillRect(pad_left+cursor_pos, pad_top, 10, 14);
+		}
+
+		// draw wrong key
+		this.layer.fillText(wrong_key, pad_left+cursor_pos, pad_top+50);
+
+		// draw typed path so far
+		this.layer.fillStyle('#33ffbb')
+			.fillText(typedstr, pad_left, pad_top);
+
+
+		// draw other available options
+		this.layer.fillStyle(at_choice ? '#000' : '#4d6600');
+		var textline = pad_top+30;
+		var textcol  = this.layer.measureText(curstr).width + pad_left + 20;
+		var draw_layer = this.layer; // the hacks are piling up...
+		if(curpath.paths){
+			curpath.paths.forEach(function(p){
+				// so many magic numbers!!! this is starting to get gross
+				draw_layer.fillText(p.str, textcol, textline);
+				textline += 30;
+			});
+		}
+	},
+
+	keydown: function(event) { press(event.key); },
+	ready: function(){ section('start'); },
+});
+
+</script>
+</body>
+</html>
+

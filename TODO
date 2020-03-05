@@ -1,0 +1,58 @@
+== TODO ==
+
+x Proof of concept: showing typed text as it is entered
+x Proof of concept: branching text "paths"
+x Proof of concept: game script DSL converted to JSON
+x Check game script for unreachable sections
+  Allow typing just the keys we know from a path
+  Display section text
+  Display section images
+  Paths can also have little icon-like images?
+  On-screen keyboard with finger columns and key highlighting
+
+
+== Design Notes ==
+
+Home Town represents the home row and will have characters named after each key:
+	a - Affir
+	...
+	j - Jay
+	k - Kay
+	l - Lilly
+
+The color of the characters will match the on-screen keyboard columns for the various fingers.
+
+The color-coding might even extend UP to the Highlands (qwerty...) and DOWN to the caves and swamps (zxcvb...).
+
+Above the Highlands, are the ten mountains (12345...) where each of the masters can teach a spell (such as ! "Bang!") and (@ "At" - teleport?).
+
+All special characters are used for spell-casting - Home Town will have the ';', which will let you cast something that finally releases you from Home Town.
+
+The first mission out of Home Town should be to take you to the Temple of the I (with an eyeball motif!) where you learn to type the letter I so you can start using it in the text "I went to the...".
+
+Until you can type everything, maybe people say, "Oh, I can barely understand you, dear.  But that's okay, everybody's like that at first.  Pretty soon you'll be talking like the rest of us!"
+
+At some point (possibly still in Home Town), you'll be visited by a Shifter (or multiple Shifters? Left and Right?).  Anyway, they'll teach you how to use Shift to type uppercase letters.  They'll also be shape-shifters - maybe they can each turn into an animal...maybe your character even turns into an animal while Shift is pressed in a funny way?
+
+
+== Tech Notes ==
+
+Explore SVG rendering since I'd like to do vector graphics - and the game will be largely formatted text, etc.
+
+Likely don't need canvas or traditional game loop since I won't have anything timed or any animation (other than the blinking cursor).
+
+Probably shouldn't be any difference between paths and sections in the .script file - allow arbitary anonymous and named paths like so:
+
+	camp: You arrived at a camp. There is a fire and a tent.
+		choice: What would you like to do at camp?
+			I decided to
+				jump in the fire.
+					: Oh dear! Let's not do that!
+						I didn't do that. -> choice
+				sleep in the tent. -> sleep_tent
+
+We'll let the user type just the letters they know from a path.  Here's a crummy example with just a couple letters from the home row:
+
+    I went to Jay's Shop.
+              j   s s
+
