@@ -11,15 +11,31 @@
 <script src="lib/flyd.min.js"></script>
 <script src="lib/mithril.min.js"></script>
 <script>
-str="";
-Array.prototype.contains = function(val){
-	return (this.indexOf(val) !== -1);
-};
-addEventListener("keydown", function(e){
-	if(['Shift','Alt','Control','Meta'].contains(e.key)) return;
+//  The Meiosis Pattern  -  http://meiosis.js.org
+// ------------------------------------------------
+// I'm rewinding this to Tutorial Step 03 "Streams"
+// so that I can build it forward as needed.
+// Using Flyd as the stream library.
+var initial_state = { typed_str: "" };
+var actions = {
+	add_char: function(c){ update(c) },
+}
+var update = flyd.stream();
+var states = flyd.scan(function(state, c){
+	state.typed_str+=c;
+	return state;
+}, initial_state, update);
+
+// For now, just limit to keys you might type while
+// writing a novel. :-)
+var key_ok = /^[A-Za-z0-9,.?!'" ]$/;
+document.addEventListener("keydown", function(e){
+	if(! key_ok.test(e.key)) return;
 	str+=e.key;
 	m.redraw();
 });
+
+// Mithril.js component - just a view for rendering.
 var game = {
 	view: function(){
 		return [

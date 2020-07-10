@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+	<meta charset="utf-8">
+	<head>
+		<title>Keeb's Quest - An Adventure in Typing</title>
+	</head>
+<body>
+<script src="lib/mithril.min.js"></script>
+<script src="lib/flyd.min.js"></script>
+<script src="lib/mergerino.js"></script>
+<script>
+var initial_state = { str: "" };
+
+// The stream to which mergerino patches are pushed.
+var update = flyd.stream();
+
+// Scan applies mergerino() patches on the update stream to the
+// accumulated state object (starting with the initial state).
+var state = flyd.scan(mergerino, initial_state, update);
+
+// Actions put new Mergerino patches to the update stream.
+var Actions = {
+	charadded: function(c){
+		update({ str: (v) => v+c });
+	},
+};
+
+document.addEventListener("keydown", function(e){
+	// Invoke the charadded action and trigger a Mithril redraw.
+	Actions.charadded(e.key);
+	m.redraw();
+});
+
+var Game = function(){
+	return {
+		view: function(vnode){
+			return m("p", "You Typed:"+state().str);
+		},
+	}
+};
+
+m.mount(document.body, Game);
+</script>
+</body>
+</html>
+
