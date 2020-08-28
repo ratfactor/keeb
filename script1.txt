@@ -1,0 +1,77 @@
+<show narrator>
+
+More
+lines
+of
+stuff
+
+<show narrator>
+
+less
+lines
+
+<show narrator>
+
+more lines
+again
+and even
+more
+and more
+
+<show narrator>
+
+Oh!
+Hello there!
+You just stumbled out of the woods, eh?
+Looks like we've got another one.
+
+<press space>
+
+Here's how it works.
+That keyboard in front of you in _your_ world?
+That is about to become *invisible*!
+You won't be able to see to type anymore.
+
+<press space>
+
+:-(
+
+I'm sorry to bring you the bad news.
+
+<press space>
+
+
+:-)
+
+But, I've got a *present* for you!
+This *magical keyboard* which shows up in _our_ world!
+
+<show keyboard>
+
+
+<press space>
+
+:-|
+
+<bless f>
+<bless j>
+
+There we are!  Now, stick your index fingers on the [F] and [J] keys. They're near the middle. Keep them there forever!
+Now, if you aren't already, you'll need to use one of your *thumbs* to press the spacebar!
+
+<press space>
+
+Did you look at the keyboard to find the [F] and [J]?
+Okay, that's the last time you can do that.
+Because, as I said, that keyboard is about to become *invisible*!
+Oh, and look! The [F] and [J] are now labeled on the keyboard!
+Yay!
+
+<press space>
+
+You used a thumb to press the spacebar, right?
+Well, I really must be off. You caught me at lunch time.
+At least you know enough to get to Home Town.
+Off you go!
+
+<press space>

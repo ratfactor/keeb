@@ -5,48 +5,82 @@
 		<title>Keeb's Quest - An Adventure in Typing</title>
 	</head>
 	<style>
+        body { font-size: 20px; background: #cda; }
+		p { margin: 5px; }
 		.typed { font-size: 24px; color: blue; }
+
+        .char {
+			background: white;
+			margin: 20px;
+			border-radius: 10px;
+		}
+        .portrait { float: right;  }
+        .dialog { padding: 10px; width: 400px; }
+        .charname { font-size: x-large; font-style: italic; text-align: center; }
+
+        .wait4space {
+            border: 2px solid #aaa;
+			background: #fff;
+			text-align: center;
+			width: 400px;
+			animation-name: fadeIn;
+			animation-duration: 2s;
+			animation-fill-mode: both;
+			margin: 20px 50px;
+			padding: 10px;
+			border-radius: 10px;
+        }
+        @keyframes fadeIn {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+        } 
+
+		/* keyboard styles */
+		.keyboard {
+			display: block;
+			background-color: white;
+			padding: 3px;
+			border-radius: 5px;
+			clear: both;
+		}
+		.key {
+            background:    silver;
+			display:       inline-block;
+			height:        54px;
+			border-radius: 5px;
+			border:        1px solid black;
+			padding:       10px;
+			box-sizing:    border-box;
+		}
+        .blessed {
+            background: white;
+        }
+		.flash {
+			animation-duration: 1s;
+			animation-name: flash;
+		}
+		@keyframes flash{
+			from {
+				background-color: lime;
+			}
+			to {
+				background-color: white;
+			}
+		}
+		.w100 {width: 54px;} 
+		.w125 {width: 67px;}
+		.w150 {width: 81px;}
+		.w175 {width: 94px;}
+		.w200 {width: 108px;}
+		.w225 {width: 121px;}
+		.w275 {width: 148px;}
+		.w625 {width: 339px;}
 	</style>
 <body>
-<script src="lib/flyd.min.js"></script>
-<script src="lib/mithril.min.js"></script>
-<script>
-//  The Meiosis Pattern  -  http://meiosis.js.org
-// ------------------------------------------------
-// I'm rewinding this to Tutorial Step 03 "Streams"
-// so that I can build it forward as needed.
-// Using Flyd as the stream library.
-var initial_state = { typed_str: "" };
-var actions = {
-	add_char: function(c){ update(c) },
-}
-var update = flyd.stream();
-var states = flyd.scan(function(state, c){
-	state.typed_str+=c;
-	return state;
-}, initial_state, update);
-
-// For now, just limit to keys you might type while
-// writing a novel. :-)
-var key_ok = /^[A-Za-z0-9,.?!'" ]$/;
-document.addEventListener("keydown", function(e){
-	if(! key_ok.test(e.key)) return;
-	str+=e.key;
-	m.redraw();
-});
-
-// Mithril.js component - just a view for rendering.
-var game = {
-	view: function(){
-		return [
-			m("h1", "Keeb's Quest"),
-			m("p", "I can type!"),
-			m(".typed", str),
-		];
-	},
-}
-m.mount(document.body, game);
-</script>
+<div id="game"></div>
+<script src="engine.js"></script>
+<script src="script1.js"></script>
+<script src="game.js"></script>
 </body>
 </html>
 
