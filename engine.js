@@ -104,45 +104,40 @@ function dom_create(v){
 }
 
 // Update DOM parent given old and new virtual elements
-function dom_update(dom_parent, v_old, v_new, dom_index){
-    // dom_index is the position in the parent where the new element will
-    // be written (there may or may not already be an element there).
-    dom_index = dom_index || 0;
+function dom_update(dom_parent, v_old, v_new){
     // No new here - remove old
     if(!v_new){
-        dom_parent.removeChild(dom_parent.childNodes[dom_index]);
+        dom_parent.removeChild(v_old.dom_elem);
         return;
     }
     // No old here - create new
     if(!v_old){
-        console.log("appending",v_new);
         dom_parent.appendChild(dom_create(v_new));
         return;
     }
 //    console.log("v_old",v_old,"v_old dom elem:",v_old.dom_elem);
     // Different - replace old with new
     if(!same(v_new, v_old)){
-        console.log("replacing",v_new);
-        dom_parent.replaceChild(dom_create(v_new), dom_parent.childNodes[dom_index]);
+        dom_parent.replaceChild(dom_create(v_new), v_old.dom_elem);
         return;
     }
     // Same type - update props
-	if(!dom_parent.childNodes[dom_index]){
+	if(!v_old.dom_elem){
 		console.log("there's no actual DOM element here to update!");
 		return;
 	}
-    dom_props(dom_parent.childNodes[dom_index], v_new.props, v_old.props);
+    dom_props(v_old.dom_elem, v_new.props, v_old.props);
     // Same type - recursively update (any) children
     if(!v_new.children) return;
     // max_child is the highest index of the old or new vnode's children
     var max_child = Math.max(v_new.children.length, v_old.children.length)-1;
-    // walk back from end of each list because removing changes dom indices
-    for(var i=max_child; i>=0; i--){
+
+    for(var i=0; i <= max_child; i++){
         if(!v_new.children[i] && !v_old.children[i]){
             // This is perfectly valid - children may be null, simply skip.
             continue;
         }
-        dom_update(dom_parent.childNodes[dom_index], v_old.children[i], v_new.children[i], i);
+        dom_update(v_old.dom_elem, v_old.children[i], v_new.children[i]);
     }
 }
 
